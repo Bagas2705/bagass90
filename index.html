@@ -2,31 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BagasTamvan - Geser yaa kertasnyaa ❤️</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
-  <link rel="stylesheet" href="./style.css">
   <style>
     body {
       font-family: 'Short Stack', cursive;
       background-color: #ffe6e6;
       margin: 0;
-      padding: 0;
+      padding: 10px;
+      overflow: auto;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
       align-items: center;
-      min-height: 100vh;
+      justify-content: flex-start;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      width: 100%;
+      max-width: 1200px;
     }
 
     .paper {
-      width: 300px;
       background: #fff;
       border-radius: 15px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      margin: 10px;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
+      width: 280px;
       position: relative;
+      transform: rotate(calc(var(--random-rotate) * 1deg));
+      transition: transform 0.3s ease;
+    }
+
+    .paper:hover {
+      transform: scale(1.05) rotate(0);
     }
 
     .paper img {
@@ -59,48 +73,133 @@
     .p2 {
       font-size: 16px;
     }
+
+    audio {
+      display: none;
+    }
+
+    /* Animasi love */
+    .love-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .love {
+      position: absolute;
+      font-size: 24px;
+      animation: float 4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0.8;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10%) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Random posisi dan delay emoji love */
+    .love:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .love:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+    .love:nth-child(3) { left: 40%; animation-delay: 1s; }
+    .love:nth-child(4) { left: 60%; animation-delay: 1.5s; }
+    .love:nth-child(5) { left: 80%; animation-delay: 2s; }
+    .love:nth-child(6) { left: 90%; animation-delay: 2.5s; }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 10px;
+      }
+
+      .paper {
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+
+    /* Tambah margin bawah di elemen terakhir */
+    .container > .paper:last-child {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
-  <!-- Geser kertas -->
-  <div class="paper heart"></div>
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="fly.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung elemen audio.
+  </audio>
 
-  <div class="paper image">
-    <p>Aku gak mau bikin pesan ini panjang-panjang, jadi cuma mau bilang... tetap jadi kamu yang apa adanya yaaa</p>
-    <p>Anddd biasanya aku malam-malam cuma ngetik kode dan dapat notif error doang... tapi sekarang ada kamuuu. Udaahh yaaa maluoouuu tapi beneran, kamu bikin semuanya jadi bedaa 😶</p>
-    <img src="sya3.jpg" alt="Foto 1">
+  <!-- Animasi Emoji Love -->
+  <div class="love-container">
+    <div class="love">❤️</div>
+    <div class="love">❤️</div>
+    <div class="love">❤️</div>
+    <div class="love">❤️</div>
+    <div class="love">❤️</div>
+    <div class="love">❤️</div>
   </div>
 
-  <div class="paper image">
-    <p>Kamu tahu gak? Hal kecil kayak ngobrol sama kamu aja bisa bikin aku senang bangettt. Terima kasih udah ada, kamu keren bangetttt.</p>
-    <img src="sya2.jpg" alt="Foto 2">
-  </div>
+  <div class="container">
+    <div class="paper heart" style="--random-rotate: -5;">
+      <video autoplay muted loop style="width: 100%; border-radius: 15px;">
+        <source src="syaavid1.mp4" type="video/mp4">
+        Browser kamu tidak mendukung pemutar video.
+      </video>
+      <p style="margin-top: 10px; font-size: 16px;">AAKLJKLJKALKHAKH YOU SOOO PRETTYYYYYTYYY 😍 ❤️</p>
+    </div>
 
-  <div class="paper image">
-    <p>Selamat hari Valentine! Aku cuma mau bilang, hari ini semanis senyuman kamu, seindah mata kamuu. Semoga hari-harimu selalu secerah ini yaaa. ❤️</p>
-    <img src="sya1.jpg" alt="Foto 3">
-  </div>
+    <div class="paper image" style="--random-rotate: 3;">
+      <p>Aku gak mau bikin pesan ini panjang-panjang, jadi cuma mau bilang... tetap jadi kamu yang apa adanya yaaa</p>
+      <p>Anddd biasanya aku malam-malam cuma ngetik kode dan dapat notif error doang... tapi sekarang ada kamuuu. Udaahh yaaa maluoouuu tapi beneran, kamu bikin semuanya jadi bedaa 😶</p>
+      <img src="syaa2.jpg" alt="Foto 1">
+    </div>
 
-  <div class="paper red">
-    <p class="p1">how's your day? 🤔</p>
-    <p class="p2">Tadinyaa aku mau ajak kamu keluar tapi kerjaan aku lagi banyakk 😞 jadinya gabisaaa, maaf yaaa.</p>
-    <p>Maybe next time yaaa okeee😍 ❤️</p>
-  </div>
+    <div class="paper image" style="--random-rotate: -8;">
+      <p>Kamu tahu gak? Hal kecil kayak ngobrol sama kamu aja bisa bikin aku senang bangettt. Terima kasih udah ada, kamu keren bangetttt.</p>
+      <img src="syaa1.jpg" alt="Foto 2">
+    </div>
 
-  <div class="paper red">
-    <p class="p1">how's your day? 🤔</p>
-    <p class="p2">Ga taauu kepikiran aja buat inii tapii troboss aja lahhh, plsss jangan hujatt nanti aku jadi kurcacii 😞</p>
-  </div>
+    <div class="paper image" style="--random-rotate: 6;">
+      <p>Selamat hari Valentine! Aku cuma mau bilang, hari ini semanis senyuman kamu, seindah mata kamuu. Semoga hari-harimu selalu secerah ini yaaa. ❤️</p>
+      <img src="sya1.jpg" alt="Foto 3">
+    </div>
 
-  <div class="paper">
-    <p class="p1">hiiii prettyyy</p>
-    <p class="p1">Amazing <span style="color: red !important;">❤️</span></p>
-  </div>
+    <div class="paper red" style="--random-rotate: -4;">
+      <p class="p1">how's your day? 🤔</p>
+      <p class="p2">Tadinyaa aku mau ajak kamu keluar tapi kerjaan aku lagi banyakk 😞 jadinya gabisaaa, maaf yaaa.</p>
+      <p>Maybe next time yaaa okeee😍 ❤️</p>
+    </div>
 
-  <div class="paper">
-    <p class="p1">ANNUUU POKONYAA GITUUU OKEEE</p>
-  </div>
+    <div class="paper red" style="--random-rotate: 5;">
+      <p class="p1">how's your day? 🤔</p>
+      <p class="p2">Ga taauu kepikiran aja buat inii tapii troboss aja lahhh, plsss jangan hujatt nanti aku jadi kurcacii 😞</p>
+    </div>
 
-  <script src="./script.js"></script>
+    <div class="paper" style="--random-rotate: -2;">
+      <p class="p1">hiiii prettyyy</p>
+      <p class="p1">Amazing <span style="color: red !important;">❤️</span></p>
+    </div>
+
+    <div class="paper" style="--random-rotate: 7;">
+      <p class="p1">ANGGAP AJA INI OPENINGNYA YAAAAAA</p>
+    </div>
+  </div>
 </body>
 </html>
